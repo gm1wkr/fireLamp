@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": "../../ESp32-fworks"
+		},
+		{
+			"name": "IceLamp-ESP32",
+			"path": ".."
+		}
+	],
+    "settings": {}
+}

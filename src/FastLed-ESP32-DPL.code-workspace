@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": "../../FastLed-ESP32-DPL"
+		},
+		{
+			"name": "IceLamp-ESP32",
+			"path": ".."
+		}
+	],
+    "settings": {}
+}
