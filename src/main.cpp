@@ -1,6 +1,15 @@
 /*
-| PHYSICAL PROJECT - Selanite Crustal Tower.
-| 24px Ring uplight for crystal, NNpx backlights
+|-------------------------------------------------------------------------------|
+| PHYSICAL PROJECT - Selanite Crustal Tower. PROTOTYPE
+|
+| Target: Espressif ESP32
+|
+| GPIO 12 - 24px WS2812B ring uplight for crystal
+| GPIO 14 - 6px WS2812B top backlight
+| GPIO 27 - 8px WS2812B bottom backlight
+| GPIO 10 - RESERVED for soft run switch
+|
+|------------------------------------------------------------------------------ |
 */
 
 #include<Arduino.h>
