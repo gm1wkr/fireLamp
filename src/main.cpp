@@ -193,10 +193,10 @@ void fireLamp()
         paletteIndex++;
     }
 
-    uint8_t lum = beatsin8(8, 128, 255);
+    uint8_t lum  = beatsin8(8, 128, 255);
     uint8_t lum2 = beatsin8(3, 220, 255);
     uint8_t lum3 = beatsin8(1, 64, 255);
-    uint8_t hue = sin8((millis() / 333) - 20);
+    uint8_t hue  = sin8((millis() / 333) - 20);
     uint8_t hue2 = cos8(millis() / 1000);
 
     leds[5]  = CHSV(hue / 2, 255, lum); 
