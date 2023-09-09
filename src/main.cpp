@@ -4,10 +4,12 @@
 |
 | Target: Espressif ESP32
 |
-| GPIO 12 - 24px WS2812B ring uplight for crystal
-| GPIO 14 - 6px WS2812B top backlight
-| GPIO 27 - 8px WS2812B bottom backlight
-| GPIO 10 - RESERVED for soft run switch
+| GPIO 12 Out - 24px WS2812B ring uplight for crystal
+| GPIO 14 Out - 6px WS2812B top backlight
+| GPIO 27 Out - 8px WS2812B bottom backlight
+| GPIO 10 In  - RESERVED for soft run switch
+| GPIO NN In  - TODO: Effect Changer
+| GPIO NN In  - TODO: WiFi Select
 |
 |------------------------------------------------------------------------------ |
 */
@@ -77,14 +79,6 @@ void setup() {
     FastLED.addLeds<WS2812B,LED_PIN_TOP, COLOR_ORDER>(ledsTop,NUM_LEDS_TOP);
     FastLED.addLeds<WS2812B,LED_PIN_BOTTOM, COLOR_ORDER>(ledsBottom,NUM_LEDS_BOTTOM);
     FastLED.setBrightness(BRIGHTNESS);
-
-    // for (uint8_t i = 0; i < NUM_LEDS_TOP; i++){
-    //     ledsTop[i] = CHSV(155, 255, 64);
-    // }
-
-    // for (uint8_t i = 0; i < NUM_LEDS_BOTTOM; i++){
-    //     ledsBottom[i] = CHSV(20, 255, 64);
-    // }
 }
 
 
@@ -97,6 +91,7 @@ void loop() {
     FastLED.delay(20);
     FastLED.show();
 }
+
 
 void sineTest()
 {
@@ -204,18 +199,18 @@ void fireLamp()
     uint8_t hue = sin8((millis() / 333) - 20);
     uint8_t hue2 = cos8(millis() / 1000);
 
-    leds[5] = CHSV(hue / 2, 255, lum); 
-    leds[6] = CHSV(hue2 / 2, 255, (lum + lum2 + lum3) / 3);
+    leds[5]  = CHSV(hue / 2, 255, lum); 
+    leds[6]  = CHSV(hue2 / 2, 255, (lum + lum2 + lum3) / 3);
     leds[14] = CHSV(hue / 2, 255, lum);
     leds[15] = CHSV(hue2 / 2, 255, (lum + lum2 + lum3) / 3);
 
     EVERY_N_MILLISECONDS(40){
         for (uint8_t i = 0; i < NUM_LEDS_TOP; i++){
-            ledsTop[i] = CHSV(hue, 255, 64);
+            ledsTop[i] = CHSV(hue, 255, 128);
         }
 
         for (uint8_t i = 0; i < NUM_LEDS_BOTTOM; i++){
-            ledsBottom[i] = CHSV(hue2, 255, 64);
+            ledsBottom[i] = CHSV(hue2, 255, 128);
         }
     }
 }
