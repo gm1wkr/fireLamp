@@ -177,7 +177,7 @@ void iceLamp()
 
 void fireLamp() 
 {
-    CRGBPalette16 fire = pFire;
+    CRGBPalette16 firePallete = pFire;
     bool flipDirection = true;
 
     uint8_t brightnessSine1 = beatsin8(1, 64, 180, 0, 0);
@@ -185,16 +185,10 @@ void fireLamp()
     uint8_t brightnessSine3 = beatsin8(11, 32, 200, 0, 0);
     uint8_t brightness = (brightnessSine1 + brightnessSine2 + brightnessSine3) / 3;
 
-    // for(uint8_t i = 0; i < NUM_LEDS; i++){
-    //     // leds[i] = ColorFromPalette(fire, colourIndex[i]);
-    //     leds[i] = CRGB(0, 0, 0);
-    // }
- 
-
-    fill_palette(leds, NUM_LEDS, paletteIndex, 255 / NUM_LEDS, fire, brightness, LINEARBLEND);    
+    fill_palette(leds, NUM_LEDS, paletteIndex, 255 / NUM_LEDS, firePallete, brightness, LINEARBLEND);    
     // add_glitter();
 
-    EVERY_N_MILLISECONDS(150){
+    EVERY_N_MILLISECONDS(200){
         paletteIndex++;
     }
 
